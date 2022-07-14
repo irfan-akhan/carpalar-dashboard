@@ -11,12 +11,15 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Text,
 } from '@chakra-ui/react';
-import { getVehicles } from '../services/vehicle.services';
+import { getVehicles, searchVehicles } from '../services/vehicle.services';
 import Navbar from '../components/Navbar.js';
+import { useRef } from 'react';
 
 const Vehicles = () => {
   const [cars, setCars] = useState([]);
+  const searchRef = useRef(null);
   useEffect(() => {
     try {
       getVehicles()
@@ -31,6 +34,16 @@ const Vehicles = () => {
       console.log('get all cars error', error);
     }
   }, []);
+
+  function searchCars(e) {
+    console.log('searcj for', searchRef.current.value);
+    searchVehicles(searchRef.current.value)
+      .then(data => {
+        console.log('succ', data);
+        setCars(data);
+      })
+      .catch(err => console.log('catch err', err));
+  }
 
   return (
     <Flex>
@@ -56,16 +69,30 @@ const Vehicles = () => {
             </Button>
           </Link>
         </Flex>
-        <InputGroup minW="90% ">
-          <InputLeftElement
-            pointerEvents="none"
-            children={<AiOutlineSearch color="red.300" />}
-          />
-          <Input type="text" placeholder="Search a car" />
-        </InputGroup>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            searchCars();
+          }}
+        >
+          <InputGroup minW="90% ">
+            <InputLeftElement
+              pointerEvents="none"
+              children={<AiOutlineSearch color="red.300" />}
+            />
+            <Input
+              ref={searchRef}
+              type="text"
+              placeholder="Search:- Name Make or Model"
+            />
+          </InputGroup>
+        </form>
+        <Text color="green" my="2" mx="3" textTransform="uppercase">
+          results: {cars.length}
+        </Text>
         <Flex width="100%">
           <ListCars cars={cars} />
-          {cars && cars.length > 0 ? <FilterCars /> : null}
+          {/* {cars && cars.length > 0 ? <FilterCars /> : null} */}
         </Flex>
       </Flex>
     </Flex>

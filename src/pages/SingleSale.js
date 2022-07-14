@@ -32,12 +32,13 @@ function renderSale(sale) {
         color="#fff"
         justifyContent="space-between"
       >
-        <Flex>
+        <Flex flexDir="column">
           <Heading as="h4" fontWeight={'600'} fontSize="1.6rem">
             {sale.vehicle?.title}
           </Heading>
           <Button
-            mx="2"
+            pointerEvents="none"
+            my="2"
             variant="solid"
             size={'xs'}
             textTransform="capitalize"
@@ -45,6 +46,18 @@ function renderSale(sale) {
           >
             {sale.type}
           </Button>
+
+          <Text
+            height="fit-content"
+            p="3px"
+            fontSize="10px"
+            borderRadius="5px"
+            border="1px solid #f4f4f4"
+            textTransform="capitalize"
+            justifySelf="flex-start"
+          >
+            {sale.status || 'Not present'}
+          </Text>
         </Flex>
         <Link to={`/vehicles/${sale.vehicle?._id}`}>
           <Button variant="solid" colorScheme="green">
@@ -52,6 +65,7 @@ function renderSale(sale) {
           </Button>
         </Link>
       </Flex>
+
       <Flex minH="55vh" width="80vw" justifyContent="space-between">
         <Flex
           bg="#eff2fd"
@@ -351,25 +365,37 @@ function renderSale(sale) {
               </Tr>
             </Thead>
             <Tbody>
-              <Tr>
-                <Td fontWeight="bold">15</Td>
-                <Td>inches</Td>
-                <Td isNumeric>25.4</Td>
-                <Td>Successfull</Td>
-                <Td>Reciept URL</Td>
-              </Tr>
+              {sale.payments && sale.payments.length > 0 ? (
+                sale.payments?.map((item, idx) => {
+                  return (
+                    <Tr key={idx}>
+                      <Td fontWeight="bold">{idx + 1}</Td>
+                      <Td>{item.status || 'Not Available'}</Td>
+                      <Td isNumeric>{item.amount}</Td>
+                      <Td>{item.receipt_url || 'Not available'}</Td>
+                      <Td>{item.data || 'Not Available'}</Td>
+                    </Tr>
+                  );
+                })
+              ) : (
+                <Tr>
+                  <Td>No payment information available</Td>
+                </Tr>
+              )}
             </Tbody>
-            <Tfoot>
-              <Tr>
-                <Th>10</Th>
-                <Th></Th>
-                <Th color="green" isNumeric>
-                  50000
-                </Th>
-                <Th></Th>
-                <Th>total paid</Th>
-              </Tr>
-            </Tfoot>
+            {sale.payments && sale.payments.length > 0 ? (
+              <Tfoot>
+                <Tr>
+                  <Th>10</Th>
+                  <Th></Th>
+                  <Th color="green" isNumeric>
+                    50000
+                  </Th>
+                  <Th>total paid</Th>
+                  <Th></Th>
+                </Tr>
+              </Tfoot>
+            ) : null}
           </Table>
         </TableContainer>
       </Flex>

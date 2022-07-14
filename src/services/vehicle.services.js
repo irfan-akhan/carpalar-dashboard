@@ -10,6 +10,17 @@ export async function addVehicle(input) {
     throw new Error(error.message);
   }
 }
+export async function searchVehicles(query) {
+  try {
+    const {
+      data: { vehicles },
+    } = await axiosInstance.get('/api/vehicles/search' + `?term=${query}`);
+    return vehicles;
+  } catch (error) {
+    console.log('service err catch', error);
+    throw new Error(error.message);
+  }
+}
 export async function getVehicle(id) {
   try {
     const {

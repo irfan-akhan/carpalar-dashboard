@@ -84,16 +84,18 @@ const Customers = () => {
                     textAlign="center"
                     fontSize="md"
                   >
-                    {customer?.name}
+                    {`${customer?.title} 
+                    ${customer?.firstName} 
+                    ${customer?.lastName}`}
                   </Text>
-                  <Text
+                  {/* <Text
                     color={secondaryText}
                     textAlign="center"
                     fontSize="sm"
                     fontWeight="500"
                   >
-                    {customer?.role} <br />
-                  </Text>
+                    {customer?.title} <br />
+                  </Text> */}
                   <Text
                     color={mainText}
                     textAlign="center"

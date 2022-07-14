@@ -14,6 +14,7 @@ import {
   Text,
   Textarea,
   useToast,
+  Select,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import {
@@ -307,6 +308,39 @@ const SingleCarList = () => {
                 {errors.mileage && (
                   <FormHelperText color="red">
                     {errors.mileage.message}
+                  </FormHelperText>
+                )}
+              </FormControl>
+              <FormControl isReadOnly={!editMode} mb="2">
+                <FormLabel htmlFor="status">Status </FormLabel>
+                {/* <Input
+                  isInvalid={errors.status}
+                  aria-label="status"
+                  name="status"
+                  errorBorderColor="crimson"
+                  type="text"
+                  placeholder="status"
+                  {...register('status', {
+                    required: 'Please enter status of the car',
+                  })}
+                /> */}
+                <Select
+                  isInvalid={errors.status}
+                  aria-label="status"
+                  name="status"
+                  errorBorderColor="crimson"
+                  type="text"
+                  placeholder="status"
+                  {...register('status', {
+                    required: 'Please enter status of the car',
+                  })}
+                >
+                  <option value={1}>Active</option>
+                  <option value={0}>De-active</option>
+                </Select>
+                {errors.status && (
+                  <FormHelperText color="red">
+                    {errors.status.message}
                   </FormHelperText>
                 )}
               </FormControl>

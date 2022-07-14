@@ -71,7 +71,7 @@ const SingleCustomer = () => {
               </Text>
             </Flex>
           </Box>
-          <Box>
+          {/* <Box>
             <Text textAlign="center" fontWeight="600">
               Action
             </Text>
@@ -108,7 +108,7 @@ const SingleCustomer = () => {
                 Save Changes
               </Button>
             )}
-          </Box>
+          </Box> */}
         </Flex>
         <Box px="3" py="2" w="100%" boxShadow="lg" minH={'65vh'}>
           <Flex>
