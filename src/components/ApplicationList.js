@@ -32,7 +32,7 @@ function renderApplications(applications) {
                 {app.title} {app.first_name} {app.last_name}
               </Td>
 
-              <Td textTransform="capitalize">{app.applied_for}</Td>
+              <Td textTransform="capitalize">{app.applied_vehicle_name}</Td>
               <Td
                 fontWeight={'bold'}
                 textTransform="capitalize"

@@ -10,6 +10,7 @@ import { BsFillCheckCircleFill, BsFillPersonLinesFill } from 'react-icons/bs';
 import { RiChatDeleteFill } from 'react-icons/ri';
 import { FcProcess } from 'react-icons/fc';
 import {
+  AiFillCar,
   AiFillContacts,
   AiFillPauseCircle,
   AiOutlineSend,
@@ -19,6 +20,7 @@ import Field from '../components/Field';
 import { FaHandshake } from 'react-icons/fa';
 import { VscReport } from 'react-icons/vsc';
 import ModalDialog from '../components/ModalDialog';
+import { Link } from 'react-router-dom';
 
 const SingleApplication = () => {
   const [application, setApplication] = useState({});
@@ -29,6 +31,7 @@ const SingleApplication = () => {
     first_name,
     last_name,
     title,
+    applied_vehicle,
     dob,
     payment_status,
     address,
@@ -51,7 +54,7 @@ const SingleApplication = () => {
     bvn,
     qualification,
     birth_place,
-    applied_for,
+    applied_vehicle_name,
     gurantors,
   } = application;
 
@@ -92,7 +95,7 @@ const SingleApplication = () => {
             mb="0"
             fontSize={'xl'}
           >
-            Application For {application?.applied_for}
+            Application For {application?.applied_vehicle_name}
           </Text>
           <Text fontWeight={'400'} textAlign="center" mb="5" fontSize={'sm'}>
             {createdAt?.slice(0, 10)}
@@ -227,8 +230,58 @@ const SingleApplication = () => {
                 />
               )}
             </Flex>
+            <Flex
+              flexDir={'column'}
+              m="3"
+              justifyContent={'center'}
+              alignItems="center"
+            >
+              <Button
+                size="md"
+                onClick={e => setDetailStep('vehicle')}
+                variant={detailStep === 'vehicle' ? 'solid' : 'outline'}
+                colorScheme={'blue'}
+              >
+                Vehicle &nbsp; <AiFillCar fontSize={'1.2rem'} />
+              </Button>
+              {detailStep === 'vehicle' ? (
+                <MdArrowDropDown
+                  style={{ marginTop: '-16px', fontSize: '2.4rem' }}
+                  fontSize={'30px'}
+                  color="blue"
+                />
+              ) : (
+                <MdArrowDropDown
+                  style={{
+                    marginTop: '-16px',
+                    fontSize: '2.4rem',
+                    visibility: 'hidden',
+                  }}
+                  fontSize={'30px'}
+                  color="blue"
+                />
+              )}
+            </Flex>
           </Flex>
           <Divider />
+          {detailStep === 'vehicle' && (
+            <Flex flexWrap="wrap" p="1rem 1.5rem">
+              <Field label="Title" value={applied_vehicle?.title} />
+              <Field
+                label="total cost"
+                value={`$${applied_vehicle.total_cost}`}
+              />
+              <Field
+                label="Weekly Payment"
+                value={`$${applied_vehicle.weekly_payment}`}
+              />
+              <Link to={`/vehicles/${applied_vehicle?._id}`}>
+                <Button variant="solid" colorScheme={'twitter'}>
+                  More Details
+                </Button>
+              </Link>
+            </Flex>
+          )}
           {detailStep === 'personal' && (
             <Flex flexWrap="wrap" p="1rem 1.5rem">
               <Field label="Title" value={title} />
@@ -260,7 +313,7 @@ const SingleApplication = () => {
               <Field label="NIN" value={bvn} />
               <Field label="Experience" value={experience} />
               <Field label="Driving For" value={driving_for} />
-              <Field label="Applied For" value={applied_for} />
+              <Field label="Applied For" value={applied_vehicle_name} />
             </Flex>
           )}
           {detailStep === 'guarantors' && (
