@@ -5,7 +5,6 @@ import {
   Button,
   Text,
   useToast,
-  Box,
   Image,
   Divider,
 } from '@chakra-ui/react';
@@ -121,7 +120,7 @@ const Sales = () => {
           isClosable: true,
         });
       });
-  }, [filterQuery]);
+  }, [filterQuery, toast]);
   console.log('first', filterQuery);
   return (
     <Flex>

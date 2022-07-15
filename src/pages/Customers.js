@@ -10,14 +10,12 @@ import {
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import UserProfile from '../components/UserProfile';
 import { getCustomers } from '../services/customers';
 
 const Customers = () => {
   const [users, setUsers] = useState([]);
   let boxBg = useColorModeValue('white !important', '#111c44 !important');
   let mainText = useColorModeValue('gray.800', 'white');
-  let secondaryText = useColorModeValue('gray.400', 'gray.400');
   function getAllCustomers() {
     getCustomers()
       .then(customers => {

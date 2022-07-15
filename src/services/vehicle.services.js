@@ -14,7 +14,7 @@ export async function searchVehicles(query) {
   try {
     const {
       data: { vehicles },
-    } = await axiosInstance.get('/api/vehicles/search' + `?term=${query}`);
+    } = await axiosInstance.get('/api/vehicles/search?term=' + query);
     return vehicles;
   } catch (error) {
     console.log('service err catch', error);

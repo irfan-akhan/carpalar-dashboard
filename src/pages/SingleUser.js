@@ -4,8 +4,6 @@ import { getSingleUser, updateUser } from '../services/users';
 import { Flex, Box, Text, Button, Select } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
-import { AiOutlineCar } from 'react-icons/ai';
-import { FaWpforms } from 'react-icons/fa';
 import Field from '../components/Field';
 import { MdArrowDropDown } from 'react-icons/md';
 

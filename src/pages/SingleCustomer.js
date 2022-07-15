@@ -5,11 +5,9 @@ import {
   Box,
   Text,
   Button,
-  Select,
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
@@ -19,7 +17,6 @@ import {
 import Navbar from '../components/Navbar';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { AiOutlineCar } from 'react-icons/ai';
-import { FaWpforms } from 'react-icons/fa';
 import Field from '../components/Field';
 import { MdArrowDropDown } from 'react-icons/md';
 import { getSingleCustomer } from '../services/customers';
@@ -27,7 +24,6 @@ import { Link } from 'react-router-dom';
 
 const SingleCustomer = () => {
   const [user, setUser] = useState(null);
-  const [status, setStatus] = useState(null);
   const [detailStep, setDetailStep] = useState('About');
 
   console.log('user', user);
@@ -71,44 +67,6 @@ const SingleCustomer = () => {
               </Text>
             </Flex>
           </Box>
-          {/* <Box>
-            <Text textAlign="center" fontWeight="600">
-              Action
-            </Text>
-            <Select
-              size="sm"
-              mt="1"
-              variant="outline"
-              name="status"
-              onChange={e => setStatus(e.target.value)}
-              placeholder="Change Status"
-            >
-              <option
-                disabled={user?.status === 'active' ? true : false}
-                value="active"
-              >
-                Active
-              </option>
-              <option
-                disabled={user?.status === 'blocked' ? true : false}
-                value="blocked"
-              >
-                Block
-              </option>
-            </Select>
-            {status && (
-              <Button
-                my="3"
-                variant="solid"
-                w="100%"
-                p="5"
-                colorScheme={'green'}
-                size="sm"
-              >
-                Save Changes
-              </Button>
-            )}
-          </Box> */}
         </Flex>
         <Box px="3" py="2" w="100%" boxShadow="lg" minH={'65vh'}>
           <Flex>
@@ -149,14 +107,6 @@ const SingleCustomer = () => {
               alignItems="center"
               mx="1"
             >
-              {/* <Button
-                size="md"
-                onClick={e => setDetailStep('Applications')}
-                variant={detailStep === 'Applications' ? 'solid' : 'outline'}
-                colorScheme={'blue'}
-              >
-                Applications &nbsp; <FaWpforms />
-              </Button> */}
               {detailStep === 'Applications' ? (
                 <MdArrowDropDown
                   style={{ marginTop: '-16px', fontSize: '2.4rem' }}

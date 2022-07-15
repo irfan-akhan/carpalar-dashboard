@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ListCars from '../components/ListCars.js';
 import { HiOutlineFolderAdd } from 'react-icons/hi';
-import FilterCars from '../components/FilterCars.js';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import {

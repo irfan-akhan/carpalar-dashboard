@@ -24,7 +24,6 @@ import {
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { signUp } from '../services/auth.service';
-import { useNavigate } from 'react-router';
 import { HiOutlineFolderAdd } from 'react-icons/hi';
 
 const CFaUserAlt = chakra(FaUserAlt);

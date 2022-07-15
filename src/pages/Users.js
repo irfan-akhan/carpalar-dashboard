@@ -1,6 +1,5 @@
-import { Flex, Text, Box, Button, Heading } from '@chakra-ui/react';
+import { Flex, Text, Box, Heading } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { HiOutlineFolderAdd } from 'react-icons/hi';
 import AddUserModal from '../components/AddUserModal';
 import Navbar from '../components/Navbar';
 import UserProfile from '../components/UserProfile';
@@ -8,7 +7,6 @@ import { getUsers } from '../services/users';
 
 function Users() {
   const [users, setUsers] = useState([]);
-  const [reload, setReload] = useState(false);
   function getAllUsers() {
     getUsers()
       .then(users => {
