@@ -11,16 +11,17 @@ import {
 } from '@chakra-ui/react';
 import { AiOutlineDelete } from 'react-icons/ai';
 
-export default function ModalDialog({ title, callback, label, icon }) {
+export default function ModalDialog({ title, callback, label, size, icon }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Button
-        leftIcon={icon ? icon : <AiOutlineDelete color="red" />}
+        leftIcon={icon ? icon : <AiOutlineDelete color="#fff" />}
         onClick={onOpen}
         colorScheme="red"
-        variant={'outline'}
-        color="red"
+        variant={'solid'}
+        color="#fff"
+        size="sm"
       >
         {label ? label : 'Delete'}
       </Button>
