@@ -30,6 +30,7 @@ import Navbar from '../components/Navbar';
 import { FiEdit } from 'react-icons/fi';
 import { MdArrowDropDown } from 'react-icons/md';
 import { AiOutlineDelete } from 'react-icons/ai';
+import UploadImageModal from '../components/UploadImageModal';
 
 const SingleCarList = () => {
   let navigate = useNavigate();
@@ -706,25 +707,29 @@ const SingleCarList = () => {
             </form>
           </Flex>
         ) : (
-          <Flex flexWrap="wrap" mt="4">
-            <Box position="relative">
-              <Image
-                borderRadius="10"
-                height="200px"
-                src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2FyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-              />
-              <Button
-                position="absolute"
-                size="xs"
-                bg="transparent"
-                colorScheme="red"
-                top="0"
-                right="0"
-                _hover={{ color: 'transparent', bg: '#f9f9f988' }}
-              >
-                <AiOutlineDelete color="red" fontSize="1.2rem" />
-              </Button>
-            </Box>
+          <Flex flexDir='column' gap="3">
+            
+             <UploadImageModal vehicelName='test'/>          
+               <Flex flexWrap="wrap" mt="4">
+              <Box position="relative">
+                <Image
+                  borderRadius="10"
+                  height="200px"
+                  src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2FyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                />
+                <Button
+                  position="absolute"
+                  size="xs"
+                  bg="transparent"
+                  colorScheme="red"
+                  top="0"
+                  right="0"
+                  _hover={{ color: 'transparent', bg: '#f9f9f988' }}
+                >
+                  <AiOutlineDelete color="red" fontSize="1.2rem" />
+                </Button>
+              </Box>
+            </Flex>
           </Flex>
         )}
       </Flex>
