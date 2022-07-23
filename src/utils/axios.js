@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:4000',
-  timeout: 2000,
+  baseURL: 'https://stark-scrubland-57145.herokuapp.com',
+   
   headers: {
     'Content-Type': 'application/json',
     accept: 'application/json',
